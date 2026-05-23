@@ -3,33 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import HexNode from './components/HexNode';
 import ChamferBox from './components/ChamferBox';
 import SkillCard from './components/SkillCard';
-import { FICHAS_BASE } from './dadosJogadores';
 
-// --- INTERFACES ---
-interface SkillData {
-  id: string;
-  titulo: string;
-  tipo: string;
-  custo: number;
-  descricao: string;
-  unlocked: boolean;
-  imagemUrl?: string;
-  pilhaExtra?: string[];
-  requisito?: string;
-}
 
-export interface CharacterSheet {
-  charName: string;
-  playerName: string;
-  alma: { principal: number; arcana: number; sorte: number; vontade: number };
-  corpo: { principal: number; combate: number; coordenacao: number; estamina: number };
-  mente: { principal: number; carisma: number; foco: number; intelecto: number };
-  armadura: number;
-  escudo: number;
-  mana: number;
-  sanidade: number;
-  skills: SkillData[];
-}
+
+
+// IMPORTAMOS TUDO DO DADOS JOGADORES (Dados e Tipos)
+import { FICHAS_BASE, CharacterSheet, SkillData } from './dadosJogadores';
 
 // --- FUNÇÃO AUXILIAR PARA LOCALSTORAGE ---
 function getStored<T>(key: string, defaultValue: T): T {
