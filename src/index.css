@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&family=Jura:wght@700&display=swap');
+@import "tailwindcss";
+
+.title-font { font-family: 'Teko', sans-serif; }
+.label-text { font-family: 'Jura', sans-serif; letter-spacing: 0.05em; font-weight: 700; }
+
+/* BORDA CHANFRADA CORRIGIDA (Sem cantos brancos) */
+.chamfer-outer {
+  background-color: #000;
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  padding: 4px;
+}
+.chamfer-inner {
+  background-color: #fff;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+  width: 100%;
+  height: 100%;
+}
+
+/* HEXÁGONOS DE ATRIBUTOS (Grandes) */
+.hex-outer {
+  width: 60px; height: 68px; background: #000;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 10;
+}
+.hex-inner {
+  width: 52px; height: 60px; background: #fff;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hex-main .hex-inner { width: 48px; height: 56px; border: 2px solid #000; }
+
+/* HEXÁGONOS PEQUENOS (Para Stress e Power-Up) */
+.hex-small-outer {
+  width: 32px; height: 36px; background: #000;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hex-small-inner {
+  width: 26px; height: 30px; background: #fff;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Input invisível dentro do hexágono */
+.hex-input {
+  width: 100%; height: 100%; text-align: center;
+  font-size: 1.5rem; font-weight: bold; font-family: 'Teko', sans-serif;
+  background: transparent; outline: none; cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* --- CARTAS ESTILO MAGIC: THE GATHERING --- */
+.mtg-card {
+  width: 100%;
+  max-width: 300px;
+  background-color: #111;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  font-family: 'Jura', sans-serif;
+  transition: transform 0.2s;
+}
+
+.mtg-card:hover {
+  transform: translateY(-5px);
+}
+
+.mtg-inner {
+  background: linear-gradient(135deg, #d3cbb8 0%, #b8af96 100%);
+  border: 2px solid #000;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mtg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #000;
+  padding: 4px 8px;
+  background: linear-gradient(to right, #e8e4d9, #d3cbb8);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.mtg-title {
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.mtg-cost {
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.mtg-art {
+  height: 140px;
+  background-color: #333;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+
+.mtg-type-line {
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-bottom: 2px solid #000;
+  background: linear-gradient(to right, #e8e4d9, #d3cbb8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mtg-text-box {
+  padding: 8px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  background-color: #f4f1ea;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Carta Bloqueada (Oculta pelo Mestre) */
+.mtg-locked {
+  filter: grayscale(100%) brightness(40%);
+  opacity: 0.7;
+}
+
+/* --- HEXÁGONO DE MANA ATIVO --- */
+.mana-active .hex-small-inner {
+  background-color: #2563eb !important; /* Azul escuro */
+  color: white !important;              /* Número em branco */
+}
+.mana-active .hex-small-inner::before {
+  border-bottom-color: #2563eb !important;
+}
+.mana-active .hex-small-inner::after {
+  border-top-color: #2563eb !important;
+}
+
+/* --- EFEITOS DE ANOMALIA / MINIGAME --- */
+.glitch-text {
+  text-shadow: 2px 0 red, -2px 0 blue;
+  animation: glitch-anim 0.2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-10deg); }
+  40% { transform: skew(10deg); }
+  60% { transform: skew(-5deg); }
+  80% { transform: skew(5deg); }
+  100% { transform: skew(0deg); }
+}
